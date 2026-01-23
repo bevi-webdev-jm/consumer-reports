@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Laravel Starter',
+    'title' => 'Consumer Reports',
     'title_prefix' => '',
     'title_postfix' => '',
 
