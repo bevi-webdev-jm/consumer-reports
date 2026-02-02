@@ -7,6 +7,9 @@ use Livewire\WithFileUploads;
 
 use Illuminate\Support\Facades\Session;
 use App\Models\Country;
+use App\Models\ConsumerReport;
+
+use App\Helpers\FileSavingHelper;
 
 class Form extends Component
 {
@@ -89,6 +92,27 @@ class Form extends Component
     }
 
     public function submitReport() {
+        $this->validate([
+            'formData.email' => 'required|email',
+            'formData.contact_number' => 'required|string',
+        ]);
+
+        $consumer_report = new ConsumerReport([
+            'email' => $this->formData['email'],
+            'contact_number' => $this->formData['contact_number'],
+            'privacy_consent' => 1,
+            'marketing_consent' => $this->formData['marketing_consent'] ?? 0,
+            'batch_number' => $this->formData['batch_number'],
+            'store_name' => $this->formData['store_name'],
+            'purchase_date' => $this->formData['purchase_date'],
+            'country' => $this->formData['country'],
+            'amount_paid' => $this->formData['amount_paid'],
+            'proof_of_purchase' => isset($this->proof_of_purchase) ? $this->proof_of_purchase->store('proofs_of_purchase', 'public') : null,
+            'categories' => isset($this->formData['categories']) ? json_encode($this->formData['categories']) : null,
+            'other_category' => $this->formData['other_category'] ?? null,
+            'description' => $this->formData['description'] ?? null,
+        ]);
+        $consumer_report->save();
     }
 
 }

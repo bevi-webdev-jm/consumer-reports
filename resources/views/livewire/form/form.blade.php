@@ -38,17 +38,16 @@
                     <div class="feature">
                         <span class="dot"></span>
                         <p>
-                            <strong>Data Processing & Marketing Consent :</strong>
-                            I confirm that I have read and understood the Data Privacy Notice and consent to the collection, use, processing, and storage of my personal data for legitimate business purposes, in accordance with applicable data protection laws. I also agree to receive marketing, promotional, or informational communications and understand that I may withdraw my consent at any time.
+                            <strong>Data Processing:</strong>
+                            I confirm that I have read and understood the Data Privacy Notice and consent to the collection, use, processing, and storage of my personal data for legitimate business purposes, in accordance with applicable data protection laws.
                         </p>
                     </div>
-                    <div class="feature">
-                        <span class="dot"></span>
-                        <p>
-                            <strong>Data Processing :</strong>
-                            I confirm that I have read and understood the Data Privacy Notice and consent to the collection, use, processing, and storage of my personal data for legitimate business purposes, in accordance with applicable data protection laws. I do not consent to receiving marketing, promotional, or informational communications.
-                        </p>
-                    </div>
+
+                    <label class="checkbox-item" wire:key="cat-other">
+                        <input type="checkbox" wire:model.live="marketing_consent" value="1">
+                        <span class="custom-check"></span>
+                        I also agree to receive marketing, promotional, or informational communications and understand that I may withdraw my consent at any time.
+                    </label>
                 </div>
 
                 <div class="action-group">
@@ -146,7 +145,7 @@
                                     <input type="text" wire:model.blur="other_category_detail" placeholder="Please specify the category">
                                 </div>
                             @endif
-                        </div> 
+                        </div>
                     </div>
 
                     <div class="input-group full-width">
